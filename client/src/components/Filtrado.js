@@ -1,18 +1,17 @@
 import React from 'react'
 import { Container, Row, Col, Button } from 'react-bootstrap'
 import {useDispatch, useSelector} from "react-redux";
-import {newProducts, usedProducts, mayorPrecio} from "../store/actions";
+import {newProducts, usedProducts, getProducts} from "../store/actions";
 
 export default function Filtrado() {
 
     const dispatch = useDispatch();
 
-    const Products = useSelector(state => state.products)
-
-   
-
-  
-    
+    //const Products = useSelector(state => state.products);
+    const Query = useSelector(state => state.query)
+    const offset = 0
+    const newSort = "price_desc";
+    const menosPrecio = "price_asc"
     return (
         <Container style={{display: "flex", marginLeft: "35%"}}>
             <Row>
@@ -31,14 +30,14 @@ export default function Filtrado() {
             </Row>       
             <Row>
                 <Col>
-                <Button style={{ margin: "5px"}} onClick={ () => dispatch(mayorPrecio()) }>
+                <Button style={{ margin: "5px"}}  onClick={() => dispatch(getProducts(Query, offset, newSort)) }>
                         Mayor Precio
                     </Button>
                 </Col>
             </Row>       
             <Row>
                 <Col>
-                <Button style={{ margin: "5px"}}>
+                <Button style={{ margin: "5px"}}  onClick={() => dispatch(getProducts(Query, offset, menosPrecio)) }>
                         Menor Precio
                     </Button>
                 </Col>

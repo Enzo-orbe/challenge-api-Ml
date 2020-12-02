@@ -1,9 +1,10 @@
 import {SEARCH_PRODUCT, NEW_PRODUCT, USED_PRODUCT, MAYOR_PRECIO} from "./constants";
 import axios from "axios";
 
-export function getProducts(query, offset) {
+export function getProducts(query, offset, sort) {
     return function(dispatch){
-        axios.get(`http://localhost:3001/search?q=${query}&offset=${offset}`)
+        console.log(`http://localhost:3001/search?q=${query}&offset=${offset}&sort=${sort}`)
+        axios.get(`http://localhost:3001/search?q=${query}&offset=${offset}&sort=${sort}`)
         .then(res => {
             console.log(res.data)
             dispatch({ type: SEARCH_PRODUCT, payload: res.data})

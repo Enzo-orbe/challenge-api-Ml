@@ -7,7 +7,7 @@ import { CardGroup, Container } from 'react-bootstrap';
 export default function Catalog() {
 
     const Products = useSelector(state => state.products)
-   
+    // const stock = useSelector(state => state.)
     return (
         <Container style={{display: "flex", marginTop: "20px", alignItems: "center", justifyContent: "center"}}>
           <CardGroup>
@@ -19,7 +19,7 @@ export default function Catalog() {
                   price={p.price}
                   currency={p.currency_id}
                   condition={p.condition}
-                  stock={p.installments.quantity}
+                  stock={p.available_quantity}
                   />
               ))
               }

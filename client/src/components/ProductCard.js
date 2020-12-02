@@ -1,7 +1,7 @@
 import React from 'react';
 import {Card, Row,Col} from "react-bootstrap"
 
-export default function ProductCard({image, price, stock, currency, condition, title}) {
+export default function ProductCard({image, price, currency,stock, condition, title}) {
     return (
         <Row>
           <Col>
@@ -10,9 +10,11 @@ export default function ProductCard({image, price, stock, currency, condition, t
           <Card.Body>
            <Card.Title>{title}</Card.Title>
           <Card.Text>
-            <p>Condition: {condition}</p>
-            <p>Price:  {price} {currency}</p>
-           <p>Stock: {stock}</p>
+            <p style={{fontWeight: "bold"}}>Condition: <span style={{fontWeight: "normal"}}>{condition}</span></p>
+            <br/>
+             <p style={{fontWeight: "bold"}}>Price: <span style={{fontWeight: "normal"}}>{price} {currency}</span></p>
+            <br />
+           <p style={{fontWeight: "bold"}}>Stock: {stock ? stock : "No hay Stock"}</p>
             </Card.Text>
            </Card.Body>
           </Card>

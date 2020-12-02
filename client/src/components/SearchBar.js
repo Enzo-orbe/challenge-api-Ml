@@ -21,11 +21,11 @@ export default function SearchBar() {
 
     return (
         <div>
-            <Navbar bg="primary" variant="dark">
+            <Navbar bg="primary" variant="dark" className="justify-content-between">
                 <Navbar.Brand href="/">Henry Challenge</Navbar.Brand>
                 {Products.length ? <Botones query={query.query} /> : null }             
                 <Form inline>
-                <FormControl type="text" placeholder="Search" className="ml-auto" name="query"  onChange={handleChange} />
+                <FormControl type="text" placeholder="Search" className="mr-sm-2" name="query"  onChange={handleChange} />
                 <Button variant="outline-light" onClick={handleClick}>Search</Button>
                 </Form>
             </Navbar>

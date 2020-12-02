@@ -4,6 +4,7 @@ import Catalog from "./components/Catalog"
 import {useSelector} from "react-redux";
 import Filtrado from "./components/Filtrado.js";
 import './App.css';
+import Bienvenidos from "./components/Bienvenidos"
 
 function App() {
   const Products = useSelector(state => state.products)
@@ -11,7 +12,7 @@ function App() {
   return (
     <Router>
       <Route exact path="/" component={SearchBar} />
-      {Products.length ? <Filtrado /> : null}
+      {Products.length ? <Filtrado /> : <Bienvenidos />}
       <Route exact path="/" component={Catalog} /> 
     </Router>
   );

@@ -2,7 +2,9 @@ import {SEARCH_PRODUCT, NEW_PRODUCT, USED_PRODUCT, MAYOR_PRECIO} from "../consta
 
 const initialState = {
     products: [],
-    offset: 0
+    offset: 0,
+    query: "",
+    stock: ""
 }
 
 export default function(state = initialState, action){
@@ -11,7 +13,8 @@ export default function(state = initialState, action){
             return {
                 ...state,
                 products: action.payload.results,
-                offset: action.payload.paging.offset
+                offset: action.payload.paging.offset, 
+                query: action.payload.query
             }
 
         case NEW_PRODUCT: 
