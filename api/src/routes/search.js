@@ -7,12 +7,10 @@ router.get("/", (req, res) => {
     const query = req.query.q;
     const offset = req.query.offset;
     const sort = req.query.sort;
-    console.log(query)
     axios.get(`https://api.mercadolibre.com//sites/MLA/search?q=${query}&limit=30&offset=${offset}&sort=${sort}`)
     .then((respuesta) => {
         res.status(200).json(respuesta.data);
       })
-  
       .catch((err) => {
         console.log(err.message);
       });

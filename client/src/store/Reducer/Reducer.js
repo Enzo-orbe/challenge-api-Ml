@@ -17,21 +17,26 @@ export default function(state = initialState, action){
                 query: action.payload.query
             }
 
-        case NEW_PRODUCT: 
+            case NEW_PRODUCT: 
             return {
                 ...state,
-                products: state.products.filter(prod => prod.condition === action.payload) 
+                products: [...state.products].sort((a,b) => a.condition > b.condition ? 1  : -1) 
             }  
-        case USED_PRODUCT: 
-            return { 
+            case USED_PRODUCT: 
+                return { 
+                    ...state,
+                    products:[...state.products].sort((a,b) => a.condition < b.condition ?  1  : -1)
+                }       
+            case MAYOR_PRECIO: 
+            return {
                 ...state,
-                products: state.products.filter(prod => prod.condition === action.payload) 
-            }       
-        case MAYOR_PRECIO: 
-        return {
-            ...state,
-            products: state.products.sort((a, b) => a.price > b.price ? 1  : -1 )
-        }    
+                products: [...state.products].sort((a, b) => a.price < b.price ? 1  : -1 )
+            }    
+            case "MENOR_PRECIO": 
+            return {
+                ...state,
+                products: [...state.products].sort((a, b) => a.price > b.price ? 1  : -1 )
+            }   
         default: return state;
     }
 }

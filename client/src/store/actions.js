@@ -3,7 +3,7 @@ import axios from "axios";
 
 export function getProducts(query, offset, sort) {
     return function(dispatch){
-        console.log(`http://localhost:3001/search?q=${query}&offset=${offset}&sort=${sort}`)
+       // console.log(`http://localhost:3001/search?q=${query}&offset=${offset}&sort=${sort}`)
         axios.get(`http://localhost:3001/search?q=${query}&offset=${offset}&sort=${sort}`)
         .then(res => {
             console.log(res.data)
@@ -30,5 +30,11 @@ export function usedProducts(condition){
 export function mayorPrecio(){
     return function(dispatch){
         dispatch({ type: MAYOR_PRECIO})
+    }
+}
+
+export function menorPrecio(){
+    return function(dispatch){
+        dispatch({ type: "MENOR_PRECIO"})
     }
 }
